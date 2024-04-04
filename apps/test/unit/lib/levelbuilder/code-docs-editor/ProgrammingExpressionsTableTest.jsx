@@ -149,7 +149,7 @@ describe('ProgrammingExpressionsTable', () => {
     const wrapper = isolateComponent(
       <ProgrammingExpressionsTable {...defaultProps} />
     );
-    return new Promise(resolve => setImmediate(resolve)).then(() => {
+    return new Promise(resolve => setTimeout(resolve, 0)).then(() => {
       expect(fetchStub.callCount).to.equal(1);
       // A reactabular table has a Header and a Body
       expect(wrapper.findAll('Header').length).to.equal(1);
@@ -165,7 +165,7 @@ describe('ProgrammingExpressionsTable', () => {
     const wrapper = isolateComponent(
       <ProgrammingExpressionsTable {...defaultProps} hidden />
     );
-    return new Promise(resolve => setImmediate(resolve)).then(() => {
+    return new Promise(resolve => setTimeout(resolve, 0)).then(() => {
       expect(fetchStub.callCount).to.equal(1);
       // A reactabular table has a Header and a Body
       expect(wrapper.findAll('Header').length).to.equal(0);
@@ -178,7 +178,7 @@ describe('ProgrammingExpressionsTable', () => {
       .withArgs('/programming_expressions/get_filtered_results?page=1')
       .returns(Promise.resolve({ok: true, json: () => returnData}));
     const wrapper = mount(<ProgrammingExpressionsTable {...defaultProps} />);
-    return new Promise(resolve => setImmediate(resolve)).then(() => {
+    return new Promise(resolve => setTimeout(resolve, 0)).then(() => {
       const fetchCount = fetchStub.callCount;
       expect(fetchCount).to.equal(1);
       wrapper.update();
@@ -194,7 +194,7 @@ describe('ProgrammingExpressionsTable', () => {
       .withArgs('/programming_expressions/get_filtered_results?page=1')
       .returns(Promise.resolve({ok: true, json: () => returnData}));
     const wrapper = mount(<ProgrammingExpressionsTable {...defaultProps} />);
-    return new Promise(resolve => setImmediate(resolve)).then(() => {
+    return new Promise(resolve => setTimeout(resolve, 0)).then(() => {
       wrapper.update();
       const destroyButton = wrapper.find('BodyRow').at(2).find('Button').at(1);
       destroyButton.simulate('click');
