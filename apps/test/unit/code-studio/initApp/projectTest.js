@@ -12,6 +12,8 @@ import {CP_API} from '@cdo/apps/lib/kits/maker/boards/circuitPlayground/Playgrou
 describe('project.js', () => {
   let sourceHandler;
 
+  window.dashboard = {...window.dashboard, project};
+
   const setData = project.__TestInterface.setCurrentData;
   const setSources = project.__TestInterface.setCurrentSources;
   const setInitialSaveComplete = project.__TestInterface.setInitialSaveComplete;
