@@ -187,8 +187,12 @@ export function itMakesCircuitPlaygroundComponentsAvailable(
             component = jsInterpreter.globalProperties[button];
           });
 
-          it('isPressed', () => expect(component.isPressed).to.be.a('boolean'));
-          it('holdtime', () => expect(component.holdtime).to.be.a('number'));
+          it('isPressed', () => {
+            expect(component.isPressed).to.be.a('boolean');
+          });
+          it('holdtime', () => {
+            expect(component.holdtime).to.be.a('number');
+          });
         });
       });
 
@@ -237,11 +241,15 @@ export function itMakesCircuitPlaygroundComponentsAvailable(
           component = jsInterpreter.globalProperties.accelerometer;
         });
 
-        it('start()', () => expect(component.start).to.be.a('function'));
-        it('getOrientation()', () =>
-          expect(component.getOrientation).to.be.a('function'));
-        it('getAcceleration()', () =>
-          expect(component.getAcceleration).to.be.a('function'));
+        it('start()', () => {
+          expect(component.start).to.be.a('function');
+        });
+        it('getOrientation()', () => {
+          expect(component.getOrientation).to.be.a('function');
+        });
+        it('getAcceleration()', () => {
+          expect(component.getAcceleration).to.be.a('function');
+        });
       });
 
       describe('board', () => {
