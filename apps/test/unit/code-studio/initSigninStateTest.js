@@ -24,12 +24,12 @@ describe('initSigninStateTest', () => {
       headerDiv.appendChild(name);
     }
 
-    before(() => {
+    beforeAll(() => {
       stashedRackEnv = window.dashboard.rack_env;
       window.dashboard.rack_env = 'unit_test';
       cookieName = environmentSpecificCookieName('_shortName');
     });
-    after(() => {
+    afterAll(() => {
       window.dashboard.rack_env = stashedRackEnv;
     });
 

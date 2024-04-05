@@ -11,7 +11,7 @@ describe('libraryLoader.load', () => {
   let onErrorStub, onSuccessStub, functionStub;
   let libraryName = 'Name';
   let source = 'function foo() {}';
-  before(() => {
+  beforeAll(() => {
     replaceOnWindow('dashboard', {
       project: {
         getUpdatedSourceAndHtml_: () => {},
@@ -21,7 +21,7 @@ describe('libraryLoader.load', () => {
     libraryClientApi = new LibraryClientApi('123');
   });
 
-  after(() => {
+  afterAll(() => {
     restoreOnWindow('dashboard');
   });
 

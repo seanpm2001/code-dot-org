@@ -11,8 +11,8 @@ describe('utils', () => {
     search: '',
     pathname: '',
   };
-  before(() => setWindowLocation(fakeWindowLocation));
-  after(resetWindowLocation);
+  beforeAll(() => setWindowLocation(fakeWindowLocation));
+  afterAll(resetWindowLocation);
 
   describe('queryParams', () => {
     beforeEach(() => {

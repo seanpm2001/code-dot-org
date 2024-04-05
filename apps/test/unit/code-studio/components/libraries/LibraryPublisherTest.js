@@ -25,7 +25,7 @@ describe('LibraryPublisher', () => {
   const libraryName = 'libraryName';
   const CHECKBOX_SELECTOR = 'input[type="checkbox"]';
 
-  before(() => {
+  beforeAll(() => {
     replaceOnWindow('dashboard', {
       project: {
         setLibraryDetails: () => {},
@@ -40,7 +40,7 @@ describe('LibraryPublisher', () => {
     publishSpy = sinon.stub(libraryClientApi, 'publish');
   });
 
-  after(() => {
+  afterAll(() => {
     libraryParser.suggestName.restore();
     libraryParser.sanitizeName.restore();
     restoreOnWindow('dashboard');

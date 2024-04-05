@@ -69,11 +69,11 @@ describe('SetupChecklist', () => {
     );
   }
   describe('Should use WebSerial', () => {
-    before(() => {
+    beforeAll(() => {
       sinon.stub(boardUtils, 'shouldUseWebSerial').returns(true);
     });
 
-    after(() => {
+    afterAll(() => {
       boardUtils.shouldUseWebSerial.restore();
     });
 

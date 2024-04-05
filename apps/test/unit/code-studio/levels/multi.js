@@ -23,10 +23,10 @@ describe('multi', () => {
   const containedMode = false;
   const allowMultipleAttempts = false;
 
-  before(() => {
+  beforeAll(() => {
     replaceOnWindow('appOptions', {});
   });
-  after(() => {
+  afterAll(() => {
     restoreOnWindow('appOptions');
   });
 

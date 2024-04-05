@@ -11,7 +11,7 @@ describe('Cohort Calculator', () => {
     let xhr;
     const regionalPartnerFilterValue = AllPartnersValue;
 
-    before(() => {
+    beforeAll(() => {
       xhr = sinon.useFakeXMLHttpRequest();
       cohortCalculator = shallow(
         <CohortCalculator
@@ -22,7 +22,7 @@ describe('Cohort Calculator', () => {
       );
     });
 
-    after(() => {
+    afterAll(() => {
       xhr.restore();
     });
 
@@ -40,7 +40,7 @@ describe('Cohort Calculator', () => {
     let server;
     let cohortCalculator;
 
-    before(() => {
+    beforeAll(() => {
       server = sinon.fakeServer.create();
       server.respondWith(
         'GET',
@@ -58,7 +58,7 @@ describe('Cohort Calculator', () => {
 
       server.respond();
     });
-    after(() => {
+    afterAll(() => {
       server.restore();
     });
 

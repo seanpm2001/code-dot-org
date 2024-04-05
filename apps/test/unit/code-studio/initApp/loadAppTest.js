@@ -17,7 +17,7 @@ const OLD_CODE = '<some><blocks with="stuff">in<them/></blocks></some>';
 describe('loadApp.js', () => {
   let oldAppOptions, appOptions, writtenLevelId, readLevelId;
 
-  before(() => {
+  beforeAll(() => {
     oldAppOptions = window.appOptions;
     sinon
       .stub(clientState, 'writeSourceForLevel')
@@ -53,7 +53,7 @@ describe('loadApp.js', () => {
     };
     setAppOptions(appOptions);
   });
-  after(() => {
+  afterAll(() => {
     clientState.writeSourceForLevel.restore();
     clientState.sourceForLevel.restore();
     project.load.restore();

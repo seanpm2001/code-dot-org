@@ -677,7 +677,7 @@ describe('block utils', () => {
 
   describe('custom generators', () => {
     let createBlock, generator;
-    before(() => {
+    beforeAll(() => {
       createBlock = createJsWrapperBlockCreator(
         Blockly,
         [],

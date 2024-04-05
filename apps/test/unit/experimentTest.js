@@ -9,7 +9,7 @@ describe('experiments', function () {
 
   setExternalGlobals();
 
-  before(function () {
+  beforeAll(function () {
     experiments.getQueryString_ = function () {
       return mockedQueryString;
     };
