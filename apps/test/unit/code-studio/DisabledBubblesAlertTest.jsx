@@ -1,5 +1,4 @@
 import {expect} from '../../util/reconfiguredChai';
-import sinon from 'sinon';
 import React from 'react';
 import {shallow} from 'enzyme'; // eslint-disable-line no-restricted-imports
 import i18n from '@cdo/locale';
@@ -8,18 +7,8 @@ import DisabledBubblesAlert from '@cdo/apps/code-studio/DisabledBubblesAlert';
 import {disabledBubblesSupportArticle} from '@cdo/apps/code-studio/disabledBubbles';
 
 describe('DisabledBubblesAlert', () => {
-  beforeEach(() => {
-    sinon.stub(sessionStorage, 'getItem');
-    sinon.stub(sessionStorage, 'setItem');
-  });
-
-  afterEach(() => {
-    sessionStorage.setItem.restore();
-    sessionStorage.getItem.restore();
-  });
-
   it('is visible at first, if not seen before', () => {
-    sessionStorage.getItem.withArgs('disabledBubblesAlertSeen').returns(false);
+    sessionStorage.setItem('disabledBubblesAlertSeen', 'false');
     const wrapper = shallow(<DisabledBubblesAlert />);
     expect(
       wrapper.containsMatchingElement(
@@ -41,13 +30,13 @@ describe('DisabledBubblesAlert', () => {
   });
 
   it('is hidden at first, if seen before', () => {
-    sessionStorage.getItem.withArgs('disabledBubblesAlertSeen').returns(true);
+    sessionStorage.setItem('disabledBubblesAlertSeen', 'true');
     const wrapper = shallow(<DisabledBubblesAlert />);
     expect(wrapper.find('Alert').length).to.equal(0);
   });
 
   it('hides and remembers that the alert was seen when closed', () => {
-    sessionStorage.getItem.withArgs('disabledBubblesAlertSeen').returns(false);
+    sessionStorage.setItem('disabledBubblesAlertSeen', 'false');
     const wrapper = shallow(<DisabledBubblesAlert />);
     expect(wrapper.find('Alert').length).to.equal(1);
 
@@ -56,9 +45,6 @@ describe('DisabledBubblesAlert', () => {
     wrapper.update();
 
     expect(wrapper.find('Alert').length).to.equal(0);
-    expect(sessionStorage.setItem).to.have.been.calledWith(
-      'disabledBubblesAlertSeen',
-      true
-    );
+    expect(sessionStorage.getItem('disabledBubblesAlertSeen')).to.equal('true');
   });
 });
