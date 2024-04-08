@@ -21,6 +21,7 @@ export default function SkeletonProgressDataColumn({lesson, sortedStudents}) {
             key={student.id + '.' + lesson.id}
           >
             <div
+              data-testid={'skeletonize-content'}
               className={classNames(
                 styles.lessonSkeletonCell,
                 skeletonizeContent.skeletonizeContent

@@ -6,8 +6,6 @@ import SkeletonProgressDataColumn from '@cdo/apps/templates/sectionProgressV2/Sk
 
 import {expect} from '../../../util/reconfiguredChai';
 
-import skeletonizeContent from '@cdo/apps/componentLibrary/skeletonize-content.module.scss';
-
 const STUDENT_1 = {id: 1, name: 'Student 1', familyName: 'FamNameB'};
 const STUDENT_2 = {id: 2, name: 'Student 2', familyName: 'FamNameA'};
 const STUDENTS = [STUDENT_1, STUDENT_2];
@@ -27,16 +25,16 @@ describe('SkeletonProgressDataColumn', () => {
   it('Shows skeleton if fake lesson', () => {
     const wrapper = setUp({lesson: {id: 1, isFake: true}});
 
-    expect(
-      wrapper.find(`.${skeletonizeContent.skeletonizeContent}`)
-    ).to.have.length(STUDENTS.length + 1);
+    expect(wrapper.find(`[data-testid="skeletonize-content"]`)).to.have.length(
+      STUDENTS.length + 1
+    );
   });
 
   it('Shows real header', () => {
     const wrapper = setUp();
 
-    expect(
-      wrapper.find(`.${skeletonizeContent.skeletonizeContent}`)
-    ).to.have.length(STUDENTS.length);
+    expect(wrapper.find(`[data-testid="skeletonize-content"]`)).to.have.length(
+      STUDENTS.length
+    );
   });
 });
