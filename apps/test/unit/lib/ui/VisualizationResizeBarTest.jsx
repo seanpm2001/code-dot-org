@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme'; // eslint-disable-line no-restricted-imports
-import {expect} from '../../../util/reconfiguredChai';
+import {expect} from '../../../util/deprecatedChai';
 import sinon from 'sinon';
 import {
   UnconnectedVisualizationResizeBar as VisualizationResizeBar,
