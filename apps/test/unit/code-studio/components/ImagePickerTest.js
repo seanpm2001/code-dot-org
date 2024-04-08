@@ -5,6 +5,8 @@ import ImagePicker from '@cdo/apps/code-studio/components/ImagePicker';
 import IconLibrary from '@cdo/apps/code-studio/components/IconLibrary';
 import AssetManager from '@cdo/apps/code-studio/components/AssetManager';
 import ImageURLInput from '@cdo/apps/code-studio/components/ImageURLInput';
+import {stubRedux, registerReducers} from '@cdo/apps/redux';
+import * as commonReducers from '@cdo/apps/redux/commonReducers';
 
 describe('ImagePicker', () => {
   const defaultProps = {
@@ -14,6 +16,11 @@ describe('ImagePicker', () => {
     showUnderageWarning: false,
     useFilesApi: false,
   };
+
+  beforeAll(() => {
+    stubRedux();
+    registerReducers(commonReducers);
+  });
 
   it('shows mode switch', () => {
     const wrapper = shallow(<ImagePicker {...defaultProps} />);
