@@ -22,9 +22,11 @@ import sampleLibrary from './code-studio/components/libraries/sampleLibrary.json
 import {createLibraryClosure} from '@cdo/apps/code-studio/components/libraries/libraryParser';
 import * as utils from '@cdo/apps/utils';
 import {resetIdleTime} from '@cdo/apps/redux/studioAppActivity';
+import setBlocklyGlobal from '../util/setupBlocklyGlobal';
 
 describe('StudioApp', () => {
   sandboxDocumentBody();
+  setBlocklyGlobal();
 
   describe('StudioApp.singleton', () => {
     let containerDiv, codeWorkspaceDiv;
