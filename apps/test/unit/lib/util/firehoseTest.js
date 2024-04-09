@@ -3,6 +3,8 @@ import {expect} from '../../../util/reconfiguredChai';
 import {validateFirehoseDataSize} from '@cdo/apps/lib/util/firehose';
 import logToCloud from '@cdo/apps/logToCloud';
 
+jest.unmock('@cdo/apps/lib/util/firehose');
+
 describe('firehoseDataSize', () => {
   const maxDataJSONBytes = 65500;
   const maxDataStringBytes = 4095;
