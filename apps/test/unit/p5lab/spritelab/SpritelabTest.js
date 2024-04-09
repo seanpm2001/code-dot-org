@@ -21,6 +21,7 @@ import {setExternalGlobals} from '../../../util/testUtils';
 import 'script-loader!@code-dot-org/p5.play/examples/lib/p5';
 import 'script-loader!@code-dot-org/p5.play/lib/p5.play';
 import {singleton as studioApp} from '@cdo/apps/StudioApp';
+import setBlocklyGlobal from '../../../util/setupBlocklyGlobal';
 
 const backgroundSprite = {
   orderedKeys: ['44c5937d-c5c0-4676-bd0c-f7a86e99dd98'],
@@ -36,6 +37,7 @@ const backgroundSprite = {
 
 describe('SpriteLab', () => {
   setExternalGlobals();
+  setBlocklyGlobal();
 
   beforeAll(() => sinon.stub(ReactDOM, 'render'));
   afterAll(() => ReactDOM.render.restore());
