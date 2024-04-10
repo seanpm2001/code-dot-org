@@ -3,7 +3,7 @@ import {Checkbox} from 'react-bootstrap'; // eslint-disable-line no-restricted-i
 import React from 'react';
 import {shallow} from 'enzyme'; // eslint-disable-line no-restricted-imports
 import sinon from 'sinon';
-import {expect} from "../../../../util/reconfiguredChai";
+import {expect} from '../../../../util/reconfiguredChai';
 
 describe('SingleCheckbox', () => {
   it('renders a basic checkbox', () => {
