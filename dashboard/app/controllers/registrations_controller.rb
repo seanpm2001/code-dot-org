@@ -392,7 +392,7 @@ class RegistrationsController < Devise::RegistrationsController
     @personal_account_linking_enabled = true
 
     # Handle users who aren't locked out, but still need parent permission to link personal accounts.
-    if Policies::ChildAccount.user_predates_policy?(current_user)
+    if Policies::ChildAccount.user_predates_policy?(current_user, assume_permission_required: true)
       permission_request = Queries::ChildAccount.latest_permission_request(current_user)
       @pending_email = permission_request&.parent_email
       @request_date = permission_request&.updated_at || Date.new

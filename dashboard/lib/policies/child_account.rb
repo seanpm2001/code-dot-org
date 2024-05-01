@@ -78,8 +78,8 @@ class Policies::ChildAccount
 
   # Checks if a user is affected by a state policy but was created prior to the
   # policy going into effect.
-  def self.user_predates_policy?(user)
-    return false unless parent_permission_required?(user)
+  def self.user_predates_policy?(user, assume_permission_required: false)
+    return false unless parent_permission_required?(user) || assume_permission_required
     return false unless state_policy(user)
     policy_start_date = state_policy(user)[:start_date]
 
