@@ -77,7 +77,10 @@ class Policies::ChildAccount
   end
 
   # Checks if a user is affected by a state policy but was created prior to the
-  # policy going into effect.
+  # policy going into effect. The assume_permission_required is to just assume
+  # that the account might have a personal login at some point.
+  #
+  # assume_permission_required: Forces a conservative choice where we assume we will need permission.
   def self.user_predates_policy?(user, assume_permission_required: false)
     return false unless parent_permission_required?(user) || assume_permission_required
     return false unless state_policy(user)
