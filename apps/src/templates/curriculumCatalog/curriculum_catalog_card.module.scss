@@ -65,11 +65,16 @@ $container-width: 309px;
   }
 }
 
+.iconWithDescriptionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
 .iconWithDescription {
   display: flex;
   align-items: center;
   column-gap: 0.5em;
-  margin: 0 0 0.5em 0;
 
   > p {
     font-size: 0.875em;
@@ -216,6 +221,8 @@ $container-width: 309px;
   padding: 16px 24px 20px 14px;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
+  height: 279px;
   gap: 16px;
   flex: 1 0 0;
 }

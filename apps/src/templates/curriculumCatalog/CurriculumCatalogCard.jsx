@@ -245,24 +245,6 @@ export const CustomizableCurriculumCatalogCard = ({
   };
 
   if (wide) {
-    console.log(style.wideCard);
-    const subjectsAndTopicsTagList = [];
-    if (subjectsAndTopics.length >= 1) {
-      const firstTag = subjectsAndTopics[0];
-      subjectsAndTopicsTagList.push({
-        label: firstTag,
-        tooltipContent: firstTag,
-        toolTipId: firstTag.replace(/s+/g, '-').toLowerCase(),
-      });
-    }
-    if (subjectsAndTopics.length > 1) {
-      const remainingTags = subjectsAndTopics.slice(1);
-      subjectsAndTopicsTagList.push({
-        label: `+${remainingTags.length}`,
-        tooltipContent: remainingTags.join(', '),
-        toolTipId: 'remaining-labels-tooltip',
-      });
-    }
     return (
       <div className={style.wideCard}>
         <img src={imageSrc} alt={imageAltText} className={style.wideCardImg} />
@@ -366,13 +348,15 @@ export const CustomizableCurriculumCatalogCard = ({
               )}
             </div>
             <h4>{courseDisplayName}</h4>
-            <div className={style.iconWithDescription}>
-              <FontAwesome icon="user" className="fa-solid" />
-              <p>{gradeRange}</p>
-            </div>
-            <div className={style.iconWithDescription}>
-              <FontAwesome icon="clock" className="fa-solid" />
-              <p>{duration}</p>
+            <div className={style.iconWithDescriptionContainer}>
+              <div className={style.iconWithDescription}>
+                <FontAwesome icon="user" className="fa-solid" />
+                <p>{gradeRange}</p>
+              </div>
+              <div className={style.iconWithDescription}>
+                <FontAwesome icon="clock" className="fa-solid" />
+                <p>{duration}</p>
+              </div>
             </div>
             <div
               className={classNames(
