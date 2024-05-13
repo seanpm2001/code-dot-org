@@ -271,7 +271,9 @@ Dashboard::Application.routes.draw do
 
     # Get or create a project for the given level_id. Optionally, the request
     # can include script_id to get or create a project for the level and script.
-    get "projects(/script/:script_id)/level/:level_id", to: 'projects#get_or_create_for_level'
+    # Optionally, the request can include user_id to get a project for another user,
+    # like a teacher viewing a student's work.
+    get "projects(/script/:script_id)/level/:level_id(/user/:user_id)", to: 'projects#get_or_create_for_level'
 
     post '/locale', to: 'home#set_locale', as: 'locale'
 
@@ -617,6 +619,11 @@ Dashboard::Application.routes.draw do
           collection do
             patch :bulk_update_owners
           end
+        end
+        namespace :account_linking do
+          get :landing
+          get :existing_account
+          post :link_email
         end
       end
     end
@@ -1143,10 +1150,11 @@ Dashboard::Application.routes.draw do
     end
 
     # Policy Compliance
-    get '/policy_compliance/child_account_consent/', to:
-      'policy_compliance#child_account_consent'
-    post '/policy_compliance/child_account_consent/', to:
-      'policy_compliance#child_account_consent_request'
+    namespace :policy_compliance do
+      get :pending_permission_request
+      get :child_account_consent
+      post :child_account_consent, action: :child_account_consent_request
+    end
 
     # DatablockStorageController powers the data features of applab,
     # and the key/value pair store feature of gamelab
